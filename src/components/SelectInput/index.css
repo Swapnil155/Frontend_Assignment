@@ -1,0 +1,135 @@
+.inputBox {
+    position: relative;
+    width: 400px;
+    margin: .5em;
+}
+.h6 {
+    font-weight: "800";
+     font-size : "2rem"
+  }
+.inValid {
+    position: relative;
+    width: 400px;
+    margin: .5em;
+}
+.loging button {
+    width: 400px;
+    margin: .5em;
+}
+
+.inputBox input {
+    width: 100%;
+    padding: 10px;
+    border: 1.5px solid rgba(154, 150, 150, 0.9);
+    border-radius: 10px;
+    outline: none;
+    color: black;
+    font-size: 1em;
+    transition: 0.5s;
+}
+/* .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: rgba(126, 120, 120, 0.9);
+    transition: 0.5s;
+} */
+.inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    font-weight: 500;
+    color: rgba(11, 11, 11, 0.9);
+    transition: 0.5s;
+}
+
+.inValid input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(238, 13, 13, 0.9);
+    border-radius: 10px;
+    outline: none;
+    color: black;
+    font-size: 1em;
+    transition: 0.5s;
+}
+.inValid span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    font-weight: 500;
+    color: rgba(233, 23, 23, 0.9);
+    transition: 0.5s;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+    color: black;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.9em;
+    padding: 0 10px;
+    background: wheat;
+    letter-spacing: 0.1em;
+}
+.inputBox input:valid ,
+.inputBox input:focus {
+    border: 1px solid wheat;
+} 
+
+.inValid input:valid ~ span,
+.inValid input:focus ~ span {
+    color: black;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.9em;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    padding: 0 10px;
+    background: white;
+    letter-spacing: 0.1em;
+}
+.inValid input:valid ,
+.inValid input:focus {
+    border: 1px solid red;
+} 
+
+.inputBox input::placeholder {
+    font-size: 1em;
+    opacity: 0;
+    transition: all 0.3s;
+} 
+
+.inputBox input:focus::placeholder {
+    /* color: black; */
+    opacity: 1;
+    animation-delay: 0.2s;
+}
+
+.inValid input::placeholder {
+    font-size: 1em;
+    opacity: 0;
+    transition: all 0.3s;
+} 
+
+.inValid input:focus::placeholder {
+    /* color: black; */
+    opacity: 1;
+    animation-delay: 0.2s;
+}
+
+
+.list-group{
+    display: none;
+}
+.open> .list-group {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 100%;
+}

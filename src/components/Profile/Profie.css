@@ -1,0 +1,21 @@
+.tab-title {
+    padding-top: 0.5rem!important;
+    padding-bottom: 0.5rem!important;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: auto;
+}
+.tab-title:hover {
+    color: rgba(13,110,253, 1);
+}
+ .active {
+    color: rgba(13,110,253, 1);
+    /* border-bottom:  0.2rem solid #a0a2a3; */
+}
+.tab-container {
+    display: flex;
+    width: 100%;
+    gap: 4rem;
+    padding: 1rem;
+}
