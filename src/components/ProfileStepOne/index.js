@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 import UserServices from "../../services/user.services";
 
 
-async function getDuration(file) {
-    const url = URL.createObjectURL(file);
+async function getDuration(files) {
+    const url = URL.createObjectURL(files);
 
     return new Promise((resolve) => {
         const audio = document.createElement("audio");
@@ -25,8 +25,8 @@ async function getDuration(file) {
 }
 const duration_checking = async (values) => {
     try {
-        let file = values;
-        const duration = await getDuration(file);
+        let files = values;
+        const duration = await getDuration(files);
         return duration
     } catch (error) {
         return false
@@ -37,22 +37,22 @@ const SUPPORTED_FORMATS = ["image/jpeg", "image/png", "image/tiff"];
 
 const formSchema = Yup.object().shape({
     profileImage: Yup.mixed()
-        .test("required", "You need to provide a file", (file) => {
+        .test("required", "You need to provide a file", (files) => {
             // return file && file.size <-- u can use this if you don't want to allow empty files to be uploaded;
-            if (file) return true;
+            if (files) return true;
             return false;
         })
-        .test("fileSize", "The file is too large", async (file) => {
+        .test("fileSize", "The file is too large", async (files) => {
             //if u want to allow only certain file sizes
             try {
-                return file && await file[0].size <= 2000000;
+                return files && await files[0].size <= 2000000;
             } catch (error) {
                 return false
             }
         })
-        .test("file_formate", 'Image file has unsupported format.', (file) => {
+        .test("file_formate", 'Image file has unsupported format.', (files) => {
             try {
-                return file && SUPPORTED_FORMATS.includes(file[0].type)
+                return files && SUPPORTED_FORMATS.includes(files[0].type)
             } catch (error) {
                 return false
             }
@@ -60,20 +60,20 @@ const formSchema = Yup.object().shape({
         })
     ,
     userVideo: Yup.mixed()
-        .test("required", "You need to provide a file", (file) => {
+        .test("required", "You need to provide a file", (files) => {
             // return file && file.size <-- u can use this if you don't want to allow empty files to be uploaded;
-            if (file) return true;
+            if (files) return true;
             return false;
         })
-        .test("video-type", "file Must be MP4 only", async (file) => {
+        .test("video-type", "file Must be MP4 only", async (files) => {
             try {
-                if (file) return await file[0].type === 'video/mp4'
+                if (files) return await files[0].type === 'video/mp4'
             } catch (error) {
                 return false
             }
         })
-        .test("duration-check", 'file duration 30 sec', async (file) => {
-            if (file) return await duration_checking(file[0]) <= 30
+        .test("duration-check", 'file duration 30 sec', async (files) => {
+            if (files) return await duration_checking(files[0]) <= 30
             return false
             // return file && await duration_checking(file[0]) <= 30
         }),

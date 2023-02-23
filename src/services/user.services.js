@@ -160,7 +160,7 @@ const userMediaGenderUpload = async (id, profileImage, video, gender) => {
         console.log(value);
     }
 
-    return await apiFormData.patch(`/api/user/media/${id}`, formData).then((response) => {
+    return await apiFormData.put(`/api/user/media/${id}`, formData).then((response) => {
         console.log(response)
         if (response.status === 200) {
             return response
