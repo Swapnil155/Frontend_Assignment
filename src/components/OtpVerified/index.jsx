@@ -77,7 +77,7 @@ const OtpVerified = () => {
       console.log(userId, userEmail);
 
       try {
-        await UserServices.resendOTP(userEmail, userId).then((res) => {
+        await UserServices.resendOTPUser(userEmail, userId).then((res) => {
           if (res.status === 200) {
             setShow(true);
             setTostBg(`bg-info`);

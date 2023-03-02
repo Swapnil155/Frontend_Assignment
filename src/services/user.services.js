@@ -46,14 +46,14 @@ const otpAuthentication = async (email, otp) => {
     })
 }
 
-const resendOTP = async (email, id) => {
+const resendOTPUser = async (email, id) => {
     console.log(email, id)
 
     return api.patch(`/api/user/resendOTP/${id}`, email).then((response) => {
         console.log(response)
         return response
     }).catch((error) => {
-        console.log(error.response.data)
+        console.log(error.response)
         return error.response
     })
 }
@@ -210,7 +210,7 @@ const UpdatePaymentStatus = async (payment_id, user_id) => {
 const UserServices = {
     login,
     otpAuthentication,
-    resendOTP,
+    resendOTPUser,
     regiterUser,
     userBioOrLinks,
     userUpdateProfileDetails,
