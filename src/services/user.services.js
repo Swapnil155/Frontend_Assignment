@@ -49,13 +49,18 @@ const otpAuthentication = async (email, otp) => {
 const resendOTPUser = async (email, id) => {
     console.log(email, id)
 
-    return api.patch(`/api/user/resendOTP/${id}`, email).then((response) => {
-        console.log(response)
-        return response
-    }).catch((error) => {
-        console.log(error.response)
-        return error.response
-    })
+    try {
+        return api.patch(`/api/user/resendOTP/${id}`, {email}).then((response) => {
+            console.log(response)
+            return response
+        }).catch((error) => {
+            console.log(error)
+            return error.response
+        })
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
 
 const regiterUser = async (fullname, email, dob, location, password) => {
